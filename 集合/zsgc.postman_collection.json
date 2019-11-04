@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "e898eeb9-f6b1-4000-bb52-068d37ed3c6e",
+		"name": "增改查删",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "增",
+			"item": [
+				{
+					"name": "add",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0a381197-09fa-4a07-b4d7-3aaf32557baa",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\t\t\"data\": [\r\n\t\t\t\t\t  {\r\n\t\t\t\t\t\t\"dep_id\": \"{{dep_id}}\",\r\n\t\t\t\t\t\t\"dep_name\": \"{{dep_name}}\",\r\n\t\t\t\t\t\t\"master_name\": \"{{master_name}}\",\r\n\t\t\t\t\t\t\"slogan\": \"{{slogan}}\"\r\n\t\t\t\t\t  }\r\n\t\t\t\t\t]\r\n\t\t}"
+						},
+						"url": {
+							"raw": "{{url}}/api/departments/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "改",
+			"item": [
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ba5a6eb4-b456-45ab-b7b3-8fc7465aeb0b",
+								"exec": [
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.dep_name).to.eql(pm.variables.get(\"dep_name\")+\"_up\");",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{                \r\n\t\"data\": [                        \r\n\t\t{                            \r\n\t\t\t\"dep_id\": \"{{dep_id}}\",                            \r\n\t\t\t\"dep_name\": \"{{dep_name}}_up\",                            \r\n\t\t\t\"master_name\": \"{{master_name}}_up\",                            \r\n\t\t\t\"slogan\": \"{{slogan}}_up\"                        \r\n\t\t}                  \r\n\t]            \r\n}    "
+						},
+						"url": {
+							"raw": "{{url}}/api/departments/{{dep_id}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								"{{dep_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "查",
+			"item": [
+				{
+					"name": "query",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "17083630-3128-4e20-a084-e497c6c6e55e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.dep_name).to.eql(pm.variables.get(\"dep_name\")+\"_up\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/departments/{{dep_id}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								"{{dep_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "删",
+			"item": [
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "754431be-7df4-4fc4-bc5d-761608f5ee99",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(204);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/departments/{{dep_id}}/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								"{{dep_id}}",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

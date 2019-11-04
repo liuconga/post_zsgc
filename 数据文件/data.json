@@ -1,0 +1,14 @@
+[
+    {
+            "dep_id": "T666",
+            "dep_name": "数信学院1",
+            "master_name": "李狗1",
+            "slogan": "奋斗到白头1"
+        },
+     {
+             "dep_id": "T777",
+             "dep_name": "数信学院2",
+             "master_name": "李狗2",
+             "slogan": "奋斗到白头2"
+         }
+]
